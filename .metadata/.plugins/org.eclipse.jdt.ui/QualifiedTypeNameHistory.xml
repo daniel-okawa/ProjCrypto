@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.security.KeyPair"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.params.AsymmetricKeyParameter"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.util.PublicKeyFactory"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.AsymmetricBlockCipher"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.engines.RSAEngine"/>
+<fullyQualifiedTypeName name="sun.misc.BASE64Decoder"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.util.PrivateKeyFactory"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.macs.HMac"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.digests.SHA1Digest"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.params.KeyParameter"/>
+<fullyQualifiedTypeName name="org.bouncycastle.crypto.digests.SHA256Digest"/>
+<fullyQualifiedTypeName name="javax.crypto.spec.SecretKeySpec"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
+</qualifiedTypeNameHistroy>
