@@ -99,7 +99,7 @@ public class FrameHMAC extends JFrame {
 	
 	private void hmac_compute() {
 		HMAC hmac = new HMAC(cbox_mode
-				.getSelectedItem().toString(), 0);
+				.getSelectedItem().toString(), 3);
 		//String key = hmac.generate_key();
 		
 		

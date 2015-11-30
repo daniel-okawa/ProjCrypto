@@ -21,59 +21,32 @@ public class HMAC {
 	private String stringKey;
 	private byte[] key; 
 	private String inputData;
-	private String type;
 	
-	public HMAC(String type, int code){
-		this.type = type;
-
-		if (type.equals("SHA-1") && code == 1){
+	public HMAC(int code){
+		if (code == 1){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
+			key = hexStringToByteArray(stringKey);
 			inputData = "Sample message for keylen=blocklen";
 		}
-		else if (type.equals("SHA-1") && code == 2){
+		else if (code == 2){
 			stringKey = "000102030405060708090A0B0C0D0E0F10111213";
+			key = hexStringToByteArray(stringKey);
 			inputData = "Sample message for keylen<blocklen";
 		}
-		else if (type.equals("SHA-1") && code == 3){
+		else if (code == 3){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F60616263";
+			key = hexStringToByteArray(stringKey);
 			inputData = "Sample message for keylen=blocklen";
 		}
-		else if (type.equals("SHA-1") && code == 4){
+		else if (code == 4){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
+			key = hexStringToByteArray(stringKey);
 			inputData = "Sample message for keylen<blocklen, with truncated tag";
 		}
-		else if (type.equals("SHA-1")){
-			stringKey = generate_key();
-			inputData = "HUE";
-		}
-		else if (type.equals("SHA-256") && code == 1){
-			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
-			inputData = "Sample message for keylen=blocklen";
-		}
-		else if (type.equals("SHA-256") && code == 2){
-			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F";			key = hexStringToByteArray(stringKey);
-			inputData = "Sample message for keylen<blocklen";
-		}
-		else if (type.equals("SHA-256") && code == 3){
-			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F60616263";
-			inputData = "Sample message for keylen=blocklen";
-		}
-		else if (type.equals("SHA-256") && code == 4){
-			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
-			inputData = "Sample message for keylen<blocklen, with truncated tag";
-		}
-		else if (type.equals("SHA-256")){
-			stringKey = generate_key();
-			inputData = "HUE";
-		}
-		else{
-			System.out.println("Invalid code");
-		}
-		key = hexStringToByteArray(stringKey);
 	}
 	
 	//private String inputData = "53616D706C65206D65737361676520666F72206B65796C656E3D626C6F636B6C656E";
-	public byte[] hmac_compute() {
+	public byte[] hmac_compute(String type) {
 		HMac hmac = null;
 		if (type.equals("SHA-1")) {
 			hmac = new HMac(new SHA1Digest());
@@ -98,6 +71,7 @@ public class HMAC {
 		byte[] keyBytes = new byte[1024];
 		try {
 			random = SecureRandom.getInstance("SHA1PRNG");
+			
 			random.nextBytes(keyBytes);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -105,8 +79,6 @@ public class HMAC {
 		}
 		
 		SecretKeySpec key = new SecretKeySpec(keyBytes, "HMAC");
-		
-		System.out.println(key.getEncoded().toString());
 		return key.getEncoded().toString();
 	}
 

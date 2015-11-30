@@ -98,15 +98,15 @@ public class FrameHMAC extends JFrame {
 	}
 	
 	private void hmac_compute() {
-		HMAC hmac = new HMAC(cbox_mode
-				.getSelectedItem().toString(), 0);
+		HMAC hmac = new HMAC(4);
 		//String key = hmac.generate_key();
 		
 		
 		try {
 			ta_key.setText(getHexString(hmac.getKey()));
 			ta_message.setText(getHexString(hmac.getMessage().getBytes()));
-			byte[] encoded = hmac.hmac_compute();
+			byte[] encoded = hmac.hmac_compute(cbox_mode
+					.getSelectedItem().toString());
 			ta_mac.setText(getHexString(encoded));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -98,6 +98,7 @@ public class HMAC {
 		byte[] keyBytes = new byte[1024];
 		try {
 			random = SecureRandom.getInstance("SHA1PRNG");
+			
 			random.nextBytes(keyBytes);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -105,8 +106,6 @@ public class HMAC {
 		}
 		
 		SecretKeySpec key = new SecretKeySpec(keyBytes, "HMAC");
-		
-		System.out.println(key.getEncoded().toString());
 		return key.getEncoded().toString();
 	}
 
