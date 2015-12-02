@@ -1,0 +1,169 @@
+package src.algorithms;
+
+import java.security.KeyPairGenerator;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import org.bouncycastle.crypto.digests.SHA1Digest;
+import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.crypto.macs.HMac;
+import org.bouncycastle.crypto.params.KeyParameter;
+
+import sun.misc.BASE64Encoder;
+
+
+
+public class HMAC {
+	
+	private String stringKey;
+	private byte[] key; 
+	private String inputData;
+	private String type;
+	
+	public HMAC(String type, int code){
+		this.type = type;
+		if (type.equals("SHA-1") && code == 0){
+			stringKey = generate_key();
+			inputData = "HUE";
+		}
+		else if (type.equals("SHA-1") && code == 1){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
+			inputData = "Sample message for keylen=blocklen";
+		}
+		else if (type.equals("SHA-1") && code == 2){
+			stringKey = "000102030405060708090A0B0C0D0E0F10111213";
+			inputData = "Sample message for keylen<blocklen";
+		}
+		else if (type.equals("SHA-1") && code == 3){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F60616263";
+			inputData = "Sample message for keylen=blocklen";
+		}
+		else if (type.equals("SHA-1") && code == 4){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
+			inputData = "Sample message for keylen<blocklen, with truncated tag";
+		}
+		else if (type.equals("SHA-256") && code == 0){
+			stringKey = generate_key();
+			inputData = "HUE";
+		}
+		else if (type.equals("SHA-256") && code == 1){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
+			inputData = "Sample message for keylen=blocklen";
+		}
+		else if (type.equals("SHA-256") && code == 2){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F";			key = hexStringToByteArray(stringKey);
+			inputData = "Sample message for keylen<blocklen";
+		}
+		else if (type.equals("SHA-256") && code == 3){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F60616263";
+			inputData = "Sample message for keylen=blocklen";
+		}
+		else if (type.equals("SHA-256") && code == 4){
+			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
+			inputData = "Sample message for keylen<blocklen, with truncated tag";
+		}
+		else{
+			System.out.println("Invalid code");
+		}
+		key = hexStringToByteArray(stringKey);
+	}
+	
+	//private String inputData = "53616D706C65206D65737361676520666F72206B65796C656E3D626C6F636B6C656E";
+	public byte[] hmac_compute() {
+		HMac hmac = null;
+		if (type.equals("SHA-1")) {
+			hmac = new HMac(new SHA1Digest());
+		} else if (type.equals("SHA-256")) {
+			hmac = new HMac(new SHA256Digest());
+		}
+		
+		byte[] result = new byte[hmac.getMacSize()];
+		byte[] msgAry = inputData.getBytes();
+		KeyParameter kp = new KeyParameter(key);
+		hmac.init(kp);
+		hmac.update(msgAry, 0, msgAry.length);
+		hmac.doFinal(result, 0);
+		return result;
+	}
+
+	public String generate_key() {
+
+		BASE64Encoder b64 = new BASE64Encoder();
+		//SecureRandom random = createFixedRandom();
+		SecureRandom random;
+		byte[] keyBytes = new byte[1024];
+		try {
+			random = SecureRandom.getInstance("SHA1PRNG");
+			random.nextBytes(keyBytes);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "HMAC");
+		
+		try {
+			System.out.println("keybytes length " + keyBytes.length);
+			System.out.println("key length " + keySpec.getEncoded());
+			System.out.println("keybytes " + getHexString(keyBytes));
+			System.out.println("key " + getHexString(keySpec.getEncoded()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return keySpec.getEncoded().toString();
+	}
+	
+	public String getHexString(byte[] b) throws Exception {
+		String result = "";
+		for (int i = 0; i < b.length; i++) {
+			result += Integer.toString((b[i] & 0xff) + 0x100, 16).substring(1);
+		}
+		return result;
+	}
+
+	public static SecureRandom createFixedRandom() {
+		return new FixedRand();
+	}
+
+	private static class FixedRand extends SecureRandom {
+
+		MessageDigest sha;
+		byte[] state;
+
+		FixedRand() {
+			try {
+				this.sha = MessageDigest.getInstance("SHA-1");
+				this.state = sha.digest();
+			} catch (NoSuchAlgorithmException e) {
+				throw new RuntimeException("can't find SHA-1!");
+			}
+		}
+	}
+	
+	public static byte[] hexStringToByteArray(String s) {
+	    int len = s.length();
+	    System.out.println("length " + s.length());
+	    byte[] data = new byte[len / 2];
+	    for (int i = 0; i < len; i += 2) {	    	
+	    	
+	        data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+	                             + Character.digit(s.charAt(i+1), 16));
+	        System.out.println(Character.digit(s.charAt(i), 16));
+	        System.out.println(Character.digit(s.charAt(i + 1), 16));
+	    }
+	    return data;
+	}
+	
+	public byte[] getKey(){
+		return key;
+	}
+	
+	public String getMessage(){
+		return inputData;
+	}
+
+}
