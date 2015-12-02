@@ -25,8 +25,17 @@ public class HMAC {
 	
 	public HMAC(String type, int code){
 		this.type = type;
-
-		if (type.equals("SHA-1") && code == 1){
+		if ((code == 0) && (type.equals("SHA-1") || type.equals("SHA-256") )){
+			SecretKeySpec keySpec = generate_key();
+			try {
+				stringKey = getHexString(keySpec.getEncoded());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			inputData = "HUE";
+		}
+		else if (type.equals("SHA-1") && code == 1){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
 			inputData = "Sample message for keylen=blocklen";
 		}
@@ -41,10 +50,6 @@ public class HMAC {
 		else if (type.equals("SHA-1") && code == 4){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
 			inputData = "Sample message for keylen<blocklen, with truncated tag";
-		}
-		else if (type.equals("SHA-1")){
-			stringKey = generate_key();
-			inputData = "HUE";
 		}
 		else if (type.equals("SHA-256") && code == 1){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F";
@@ -61,10 +66,6 @@ public class HMAC {
 		else if (type.equals("SHA-256") && code == 4){
 			stringKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30";
 			inputData = "Sample message for keylen<blocklen, with truncated tag";
-		}
-		else if (type.equals("SHA-256")){
-			stringKey = generate_key();
-			inputData = "HUE";
 		}
 		else{
 			System.out.println("Invalid code");
@@ -90,7 +91,7 @@ public class HMAC {
 		return result;
 	}
 
-	public String generate_key() {
+	public SecretKeySpec generate_key() {
 
 		BASE64Encoder b64 = new BASE64Encoder();
 		//SecureRandom random = createFixedRandom();
@@ -104,10 +105,17 @@ public class HMAC {
 			e.printStackTrace();
 		}
 		
-		SecretKeySpec key = new SecretKeySpec(keyBytes, "HMAC");
+		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "HMAC");
 		
-		System.out.println(key.getEncoded().toString());
-		return key.getEncoded().toString();
+		return keySpec;
+	}
+	
+	public String getHexString(byte[] b) throws Exception {
+		String result = "";
+		for (int i = 0; i < b.length; i++) {
+			result += Integer.toString((b[i] & 0xff) + 0x100, 16).substring(1);
+		}
+		return result;
 	}
 
 	public static SecureRandom createFixedRandom() {
@@ -133,6 +141,7 @@ public class HMAC {
 	    int len = s.length();
 	    byte[] data = new byte[len / 2];
 	    for (int i = 0; i < len; i += 2) {	    	
+	    	
 	        data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
 	                             + Character.digit(s.charAt(i+1), 16));
 	    }
