@@ -112,12 +112,10 @@ public class AES {
 		for(int i = 0; i < 4; i++){
 			sum = 0;
 			for(int j = 0; j < 4; j++){
-				sum = (byte) (sum ^ (mix[4 * j + i] * word[j]));
-				/*debug.println("mix: " + mix[4 * j + i] + " word: " + word[j] + " mix * word: " + mix[4 * j + i] * word[j]);
-				debug.println("sum: " + sum + " sumxor " + (sum ^ (mix[4 * j + i] * word[j])));
-				debug.println();*/
+				sum = (byte) (sum ^ (mix[4 * j + i] * word[i]));
+				//debug.print(mix[4 * k + j] + " ");
 			}
-			//debug.println();
+			debug.println();
 			word[i] = sum;
 		}
 	}
