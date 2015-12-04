@@ -103,7 +103,9 @@ public class FrameAES extends JFrame {
 
 	
 	private void aes_encrypt() {
-//  TODO
+		AES aes = new AES(cbox_mode
+				.getSelectedItem().toString());
+		aes.interfaceAES();
 	}
 
 

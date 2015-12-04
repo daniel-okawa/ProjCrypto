@@ -13,4 +13,6 @@
 <fullyQualifiedTypeName name="org.bouncycastle.crypto.digests.SHA256Digest"/>
 <fullyQualifiedTypeName name="javax.crypto.spec.SecretKeySpec"/>
 <fullyQualifiedTypeName name="java.math.BigInteger"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="org.bouncycastle.util.Arrays"/>
 </qualifiedTypeNameHistroy>
