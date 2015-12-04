@@ -89,7 +89,7 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_7SIKG4LpEeWd-JiO4cKcag" elementId="org.eclipse.egit.ui.RepositoriesView" toBeRendered="false" ref="_7R-ZEYLpEeWd-JiO4cKcag"/>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_7SIKHILpEeWd-JiO4cKcag" containerData="7500" selectedElement="_7SIKHYLpEeWd-JiO4cKcag">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_7SIKHILpEeWd-JiO4cKcag" containerData="7500" selectedElement="_7SIKJoLpEeWd-JiO4cKcag">
               <children xsi:type="basic:PartSashContainer" xmi:id="_7SIKHYLpEeWd-JiO4cKcag" containerData="7500" selectedElement="_7SIKHoLpEeWd-JiO4cKcag" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_7SIKHoLpEeWd-JiO4cKcag" elementId="org.eclipse.ui.editorss" containerData="9000" ref="_7RhtIILpEeWd-JiO4cKcag"/>
                 <children xsi:type="basic:PartSashContainer" xmi:id="_7SIKH4LpEeWd-JiO4cKcag" visible="false" containerData="1000">
@@ -110,6 +110,7 @@
               <children xsi:type="basic:PartStack" xmi:id="_7SIKJoLpEeWd-JiO4cKcag" elementId="bottom" containerData="2500" selectedElement="_7SIKK4LpEeWd-JiO4cKcag">
                 <tags>newtablook</tags>
                 <tags>org.eclipse.e4.secondaryDataStack</tags>
+                <tags>active</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7SIKJ4LpEeWd-JiO4cKcag" elementId="org.eclipse.ui.views.ProblemView" ref="_7R1PI4LpEeWd-JiO4cKcag"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7SIKKILpEeWd-JiO4cKcag" elementId="org.eclipse.jdt.ui.JavadocView" ref="_7R1PJILpEeWd-JiO4cKcag"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7SIKKYLpEeWd-JiO4cKcag" elementId="org.eclipse.jdt.ui.SourceView" ref="_7R1PJYLpEeWd-JiO4cKcag"/>
@@ -151,14 +152,11 @@
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_xGWYYJh7EeWVotCvGduo6w" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="AES.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AES.java&quot; partName=&quot;AES.java&quot; title=&quot;AES.java&quot; tooltip=&quot;ProjCrypto/src/src/algorithms/AES.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ProjCrypto/src/src/algorithms/AES.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1754&quot; selectionTopPixel=&quot;935&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AES.java&quot; partName=&quot;AES.java&quot; title=&quot;AES.java&quot; tooltip=&quot;ProjCrypto/src/src/algorithms/AES.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ProjCrypto/src/src/algorithms/AES.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2446&quot; selectionTopPixel=&quot;1370&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_RrEBUJjrEeWVotCvGduo6w" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="FrameAES.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FrameAES.java&quot; partName=&quot;FrameAES.java&quot; title=&quot;FrameAES.java&quot; tooltip=&quot;ProjCrypto/src/src/gui/FrameAES.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ProjCrypto/src/src/gui/FrameAES.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3548&quot; selectionTopPixel=&quot;3992&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -185,7 +183,7 @@
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_Q5ddMJoHEeWVotCvGduo6w" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="AESDebug.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AESDebug.java&quot; partName=&quot;AESDebug.java&quot; title=&quot;AESDebug.java&quot; tooltip=&quot;ProjCrypto/src/src/algorithms/AESDebug.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ProjCrypto/src/src/algorithms/AESDebug.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;262&quot; selectionTopPixel=&quot;65&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AESDebug.java&quot; partName=&quot;AESDebug.java&quot; title=&quot;AESDebug.java&quot; tooltip=&quot;ProjCrypto/src/src/algorithms/AESDebug.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ProjCrypto/src/src/algorithms/AESDebug.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;585&quot; selectionTopPixel=&quot;269&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -215,7 +213,7 @@
       <tags>categoryTag:General</tags>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_7R1PI4LpEeWd-JiO4cKcag" elementId="org.eclipse.ui.views.ProblemView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Problems" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view PRIMARY_SORT_FIELD=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot; categoryGroup=&quot;org.eclipse.ui.ide.severity&quot; markerContentGenerator=&quot;org.eclipse.ui.ide.problemsGenerator&quot; partName=&quot;Problems&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;category IMemento.internal.id=&quot;Warnings (91 items)&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;columnWidths org.eclipse.ui.ide.locationField=&quot;90&quot; org.eclipse.ui.ide.markerType=&quot;90&quot; org.eclipse.ui.ide.pathField=&quot;230&quot; org.eclipse.ui.ide.resourceField=&quot;162&quot; org.eclipse.ui.ide.severityAndDescriptionField=&quot;718&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.resourceField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.pathField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.locationField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.markerType&quot;/>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view PRIMARY_SORT_FIELD=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot; categoryGroup=&quot;org.eclipse.ui.ide.severity&quot; markerContentGenerator=&quot;org.eclipse.ui.ide.problemsGenerator&quot; partName=&quot;Problems&quot;>&#xD;&#xA;&lt;expanded>&#xD;&#xA;&lt;category IMemento.internal.id=&quot;Warnings (99 items)&quot;/>&#xD;&#xA;&lt;/expanded>&#xD;&#xA;&lt;columnWidths org.eclipse.ui.ide.locationField=&quot;90&quot; org.eclipse.ui.ide.markerType=&quot;90&quot; org.eclipse.ui.ide.pathField=&quot;230&quot; org.eclipse.ui.ide.resourceField=&quot;162&quot; org.eclipse.ui.ide.severityAndDescriptionField=&quot;718&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.resourceField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.pathField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.locationField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.markerType&quot;/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
       <menus xmi:id="_7iN0gILpEeWd-JiO4cKcag" elementId="org.eclipse.ui.views.ProblemView">
@@ -240,6 +238,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_JKBRgILrEeWd-JiO4cKcag" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -305,7 +305,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7Bu9oILpEeWd-JiO4cKcag" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_CSc055e0EeWVotCvGduo6w" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_6nxm64LpEeWd-JiO4cKcag"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mGZTwJqxEeWbcdnTAbk5xQ" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_6nxm64LpEeWd-JiO4cKcag"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7Bu9oYLpEeWd-JiO4cKcag" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -329,7 +329,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7Bu9pYLpEeWd-JiO4cKcag" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_CSml6Ze0EeWVotCvGduo6w" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_6nxmZYLpEeWd-JiO4cKcag"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mGidsJqxEeWbcdnTAbk5xQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_6nxmZYLpEeWd-JiO4cKcag"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7Bu9poLpEeWd-JiO4cKcag" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

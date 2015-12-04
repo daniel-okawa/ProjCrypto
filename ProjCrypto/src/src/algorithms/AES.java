@@ -34,7 +34,7 @@ public class AES {
 	
 	private void aes_encrypt(){
 		//Copia a input para o state
-		byte[] testArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+		byte[] testArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 		inputArray = testArray.clone();
 		stateArray = inputArray.clone();
 		//addRoundKey(stateArray, word[0][Nb - 1]);
@@ -50,27 +50,53 @@ public class AES {
 		shiftRows(stateArray);
 		addRoundKey(stateArray, word[Nr * Nr][(Nr + 1) * Nb - 1]);*/
 		
-		shiftRows(stateArray);
+		//printArray(inputArray);
+		//shiftRows(stateArray);
+		mixColumns(stateArray);
 		outputArray = stateArray.clone();
-		System.out.println("Output: " + outputArray);
+		printArray(outputArray);
 	}
 	
 	private void subBytes(byte[] stateArray){}
 	
 	private void shiftRows(byte[] stateArray){
-		byte[] temp = stateArray;
-		int j = 0;
+		byte[] temp = stateArray.clone();
 		for(int i = 1; i < Nb; i++){
-			temp[4 * j + i] = stateArray[4 * (j + i)];
-			for(j = 0; j < 4; j++){
-				stateArray[4 * j + i] = stateArray[(4 * j + i) + 4];
+			/*for(j = 0; j < 4 - i; j++){
+				//stateArray[4 * j + i] = temp[(4 * j + i) + 4 * i];	
+				stateArray[4 * j + i] = 24;
 			}
-			stateArray[j] = temp[j];
+			for(j = 4 - i; j < 4 ; j++){	
+				//stateArray[4 * j + i] = temp[4 * j + i];
+				stateArray[4 * j + i] = 35;
+			}*/
+			for(int j = 0; j < 4; j++){
+				if (j < 4 - i){
+					stateArray[4 * j + i] = temp[(4 * j + i) + 4 * i];	
+				}
+				else {
+					stateArray[4 * j + i] = temp[4 * j + i - (4 - i) * 4];	
+				}
+				//debug.println(i + " " + j + " " + (j < 4 - i));
+			}
+			//stateArray[4 * j + i] = temp[i];
 		}
 	}
 	
 	private void mixColumns(byte[] stateArray){
-		
+		byte[] mix = { 02, 01, 01, 03, 03, 02, 01, 01, 01, 03, 02, 01, 01, 01, 03, 02 };
+		byte sum = 0;
+		for(int i = 0; i < Nb; i++){
+			for(int j = 0; j < 4; j++){
+				sum = 0;
+				for(int k = 0; k < 4; k++){
+					sum = (byte) (sum ^ (mix[4 * k + j] * stateArray[4 * j + k]));
+					//debug.print(mix[4 * k + j] + " ");
+				}
+				debug.println();
+				stateArray[4 * j + i] = sum;
+			}
+		}
 	}
 	
 	private void subWord(byte[] temp){}
@@ -102,16 +128,17 @@ public class AES {
 		int i = 0;
 		for (byte b : stateArray){
 		    stateArray[i] = (byte) (b^ word);
-			System.out.println(stateArray[i]);
+			debug.println(stateArray[i]);
 		}
 	}
 	
 	private void printArray(byte[] array){
 		for(int i = 0; i < 4; i++){
 			for(int j = 0; j < Nb; j++){
-				debug.print(array[4 * i + j] + " ");
+				debug.print(array[4 * j + i] + " ");
 			}
 			debug.println();
 		}
+		debug.println();
 	}
 }

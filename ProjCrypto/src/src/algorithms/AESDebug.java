@@ -28,4 +28,16 @@ public class AESDebug {
 			System.out.println();
 		}
 	}
+	
+	public void println(int n){
+		if(debug){
+			System.out.println(n);
+		}
+	}
+	
+	public void println(byte b){
+		if(debug){
+			System.out.println(b);
+		}
+	}
 }
